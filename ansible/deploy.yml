@@ -9,11 +9,16 @@
         name: "{{ docker_image_name }}"
         state: absent
 
-    - name: Run new container
+    - name: Run new container with an automatic free port
       community.docker.docker_container:
         name: "{{ docker_image_name }}"
         image: "{{ docker_image_user }}/{{ docker_image_name }}:{{ docker_image_tag }}"
         state: started
         restart_policy: always
         ports:
-          - "9000:5000"
+          - "0:5000" # 👈 Le "0" force Docker à choisir un port libre automatiquement !
+      register: docker_info
+
+    - name: Afficher le port qui a été attribué
+      debug:
+        msg: "L'application est en ligne sur le port : {{ docker_info.container.NetworkSettings.Ports['5000/tcp'][0].HostPort }}"
