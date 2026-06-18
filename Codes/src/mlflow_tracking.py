@@ -61,7 +61,11 @@ for name, clf in models.items():
         if os.path.exists("Figure/scatter.png"):
             mlflow.log_artifact("Figure/scatter.png")
         # Sauvegarde du modèle dans MLflow
-        mlflow.sklearn.log_model(pipeline, artifact_path=f"model_{name}")
+        mlflow.sklearn.log_model(
+            pipeline, 
+            artifact_path=f"model_{name}",
+            skops_trusted_types=["scipy.sparse._csr.csr_matrix"]
+        )
         print(f"Modèle {name} enregistré avec succès. (Recall: {rec:.4f})")
         print(classification_report(y_test, y_pred))
 
