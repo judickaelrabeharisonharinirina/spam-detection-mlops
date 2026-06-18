@@ -1,5 +1,6 @@
+---
 - name: Deploy Spam Detection App
-  hosts: prod  # Modifié pour correspondre au groupe [prod] de ton hosts.ini
+  hosts: prod
   become: false
 
   tasks:
@@ -15,4 +16,4 @@
         state: started
         restart_policy: always
         ports:
-          - "5000:5000"
+          - "8080:5000"  # 
