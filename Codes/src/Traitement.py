@@ -12,6 +12,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
+try:
+    nltk.data.find('tokenizers/punkt_tab')
+except LookupError:
+    nltk.download('punkt_tab')
 #chargement du dataset
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
