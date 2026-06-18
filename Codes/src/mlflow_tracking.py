@@ -20,7 +20,8 @@ os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
 os.environ["AWS_ACCESS_KEY_ID"] = "masoud"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "Strong#Pass#2022"
 os.environ["MLFLOW_S3_IGNORE_TLS"] = "true"
-mlflow.set_tracking_uri("http://localhost:5000")
+# Force MLflow à enregistrer les runs localement dans un dossier au lieu de chercher un serveur
+mlflow.set_tracking_uri("file:///var/jenkins_home/workspace/spam-detection-pipeline/mlruns")
 mlflow.set_experiment("Spam_Detection")
 #model
 models = {
