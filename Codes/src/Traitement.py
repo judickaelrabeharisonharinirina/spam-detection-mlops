@@ -13,7 +13,13 @@ import seaborn as sns
 import os
 
 #chargement du dataset
-data = pd.read_csv('../../Assets/Dataset/spam.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# 2. Construit le chemin absolu vers le dataset
+DATASET_PATH = os.path.abspath(os.path.join(BASE_DIR, '../../Assets/Dataset/spam.csv'))
+
+# 3. Charge le fichier
+data = pd.read_csv(DATASET_PATH)
 data.head()
 
 #enlever les placement vide 
