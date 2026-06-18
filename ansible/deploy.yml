@@ -16,7 +16,7 @@
         state: started
         restart_policy: always
         ports:
-          - "0:5000" # 👈 Le "0" force Docker à choisir un port libre automatiquement !
+          - "0:8501" # 👈 Le "0" force Docker à choisir un port libre automatiquement !
       register: docker_info
 
     - name: Afficher le port qui a été attribué
